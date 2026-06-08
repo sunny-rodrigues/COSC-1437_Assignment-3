@@ -1,0 +1,11 @@
+Giselle Rodriguez Accounting
+5600 5 30
+450 9
+
+Mary Martinez Sales
+4200 8 25
+300 6
+
+Jordan Jones HR
+5000 10 20
+200 4

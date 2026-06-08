@@ -18,12 +18,20 @@ int main()
     ifstream inFile;
     ofstream outFile;
 
+    // Open the payroll input and output files
     inFile.open("payrollData.txt");
     outFile.open("payrollReport.txt");
 
+    // Verify that both files opened successfully
     if (!inFile)
     {
         cout << "Error: Could not open payrollData.txt" << endl;
+        return 1;
+    }
+
+    if (!outFile)
+    {
+        cout << "Error: Could not open payrollReport.txt" << endl;
         return 1;
     }
 
@@ -33,19 +41,19 @@ int main()
     double paycheck, averageSpeed;
  
     outFile << fixed << showpoint << setprecision(2);
-
-        while (inFile >> firstName)
-        {
+    // Read employee records until end of file
+    while (inFile >> firstName)
+    {
         inFile >> lastName >> department;
         inFile >> grossSalary >> bonusPercent >> taxPercent;
         inFile >> distance >> travelTime;
-        
+        // Calculate paycheck and average speed
         paycheck = grossSalary
                  + (grossSalary * bonusPercent / 100.0)
                  - (grossSalary * taxPercent / 100.0);
         
         averageSpeed = distance / travelTime;
-
+        // Write formatted employee report to output file
         outFile << "Name: " << firstName << " " << lastName
                 << ", Department: " << department << endl;
     
@@ -64,8 +72,8 @@ int main()
                 << " miles per hour" << endl;
 
         outFile << endl;
-        }
-
+    }
+    // Close both files
     inFile.close();
     outFile.close();
 
